@@ -13,7 +13,7 @@ CONFIG_FILE = "config.json"
 intents = discord.Intents.all()
 intents.message_content = True
 
-bot = commands.Bot("!",intents=intents)
+bot = commands.Bot("k!",intents=intents)
 
 filas = {}
 
@@ -47,7 +47,7 @@ async def on_ready():
     except Exception as e:
         print(e)
 
-    myActivity = discord.Activity(type=discord.ActivityType.streaming, name="!ajuda")
+    myActivity = discord.Activity(type=discord.ActivityType.streaming, name="k!ajuda")
     await bot.change_presence(status=discord.Status.online, activity=myActivity)
     print(f'Bot iniciado!')
 
@@ -55,7 +55,7 @@ async def on_ready():
 async def ajuda(ctx:commands.Context):
     embed = discord.Embed(
         title=f"Ajuda!",
-        description=f"Krishna tem vários comandos, listamos alguns para você!\n\n1- !server_avatar\n\n2- !avatar\n\n3- !falar \n\n4- !play\n\n5- !pause\n\n6- !resume\n\n7- !skip\n\n8- !clear",
+        description=f"Krishna tem vários comandos, listamos alguns para você!\n\n1- k!server_avatar\n\n2- k!avatar\n\n3- k!falar \n\n4- k!play\n\n5- k!pause\n\n6- k!resume\n\n7- k!skip\n\n8- k!clear",
         color=discord.Color.red()
     )
     embed.set_author(name="Krishna")
@@ -72,6 +72,18 @@ async def clear(ctx, amount:int):
         await ctx.send("Não tenho permissão para apagar mensagens nesse chat.")
     except Exception as e:
         await ctx.send(f"Error: {e}")
+
+@bot.command()
+async def kellvys(ctx:commands.Context):
+    embed = discord.Embed(
+        title="Kellvys",
+        description="Eu amo esse mano!",
+        color=discord.Color.red()
+    )
+
+    img = discord.File("kelvo.png","kelvo.png")
+    embed.set_image(url="attachment://kelvo.png")
+    await ctx.send(embed=embed, file=img)
 
 @bot.command()
 async def gita(ctx:commands.Context):
